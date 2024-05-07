@@ -11,7 +11,7 @@
 				Drive into the world of fast and comfortable driving
 			</div>
 			<div class="firstSectionSignUpButtonWrapper">
-				<button class="signUpButton">sign up</button>
+				<button class="signUpButton" @click="router.push('/signup')">sign up</button>
 			</div>
 		</div>
 		<div class="bikeFirstSection">
@@ -20,17 +20,23 @@
 			</div>
 			<div class="firstSectionSelectWrapper">
 				<div class="selectFirstSection">
-					motorbikes<IconChevronDown color="#F4931C" />
+					motorbikes
+					<IconChevronDown color="#F4931C" />
 				</div>
 				<div class="motolifeFirstSection">motolife</div>
 				<div class="selectFirstSection">
-					equipment<IconChevronDown color="#F4931C" />
+					equipment
+					<IconChevronDown color="#F4931C" />
 				</div>
 			</div>
 		</div>
 		<div class="animateLogoFirstSection"></div>
 	</div>
 </template>
+
+<script setup lang="ts">
+const router = useRouter();
+</script>
 
 <style>
 .firstSection {
@@ -176,12 +182,14 @@
 	letter-spacing: 0.36px;
 	text-transform: uppercase;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}
@@ -240,6 +248,7 @@
 			linear-gradient(-180deg, #000101 0.17%, rgba(0, 1, 1, 0) 21.47%),
 			linear-gradient(0deg, #000101 0.17%, rgba(0, 1, 1, 0) 21.47%);
 	}
+
 	.animateLogoFirstSection {
 		display: none;
 	}

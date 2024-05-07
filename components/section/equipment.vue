@@ -4,11 +4,25 @@
 			<span class="firstSectionDescriptionTitleOrange">most popular</span>
 			motorbike rental deals
 		</div>
-		<div class="bikeCardsWrapper">
-			<BikeCard />
+		<div class="bikeCardsContainer">
+			<div class="bikeCardsWrapper" v-for="(motorcycle, index) in motorcyclesLanding">
+				<BikeCard :key="index" :motorcycle />
+			</div>
 		</div>
 	</div>
 </template>
+
+<script lang="ts">
+import { motorcyclesLanding } from '~/public/constants/constants';
+
+export default {
+	data() {
+		return {
+			motorcyclesLanding,
+		};
+	},
+};
+</script>
 
 <style>
 .equipmentSection {
@@ -30,9 +44,19 @@
 	align-items: flex-start;
 }
 
+.bikeCardsContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 @media (min-width: 768px) {
 	.bikeCardsWrapper {
 		width: calc(100% - 200px);
+		gap: 40px;
+	}
+
+	.bikeCardsContainer {
 		gap: 40px;
 	}
 }
@@ -42,6 +66,12 @@
 		width: calc(100% - 48px);
 		gap: 50px;
 		flex-direction: column;
+	}
+
+	.bikeCardsContainer {
+		flex-direction: column;
+		gap: 50px;
+		align-items: start;
 	}
 
 	.equipmentSection {

@@ -1,34 +1,42 @@
 <template>
 	<div class="bikeCard">
 		<div class="nameAndImageBikeCardContainer">
-			<div class="typeOfBikeCard">road motorbikes</div>
-			<img class="imageOfBikeCard" src="/images/bike1.png" />
+			<div class="typeOfBikeCard">{{ $props.motorcycle.type }}</div>
+			<img class="imageOfBikeCard" :src="$props.motorcycle.imageUrl" />
 			<div class="imageOfBikeCardOverlay" />
 			<button class="iconButtonHeart">
 				<IconHeart />
 			</button>
 		</div>
-		<div class="motorcycleNameBikeCard">Yamaha FZ6N</div>
+		<div class="motorcycleNameBikeCard">{{ $props.motorcycle.name }}</div>
 		<div class="characteristicsContainerBikeCard">
 			<div class="typeOfBikeCard">one hour rental</div>
 			<div class="delimiterBikeCard" />
-			<div class="priceBikeCard">100$</div>
+			<div class="priceBikeCard">{{ $props.motorcycle.oneHourRental }}</div>
 		</div>
 		<div class="characteristicsContainerBikeCard">
 			<div class="typeOfBikeCard">rental day</div>
 			<div class="delimiterBikeCard" />
-			<div class="priceBikeCard">500$</div>
+			<div class="priceBikeCard">{{ $props.motorcycle.rentalDay }}</div>
 		</div>
 		<div class="characteristicsContainerBikeCard">
 			<div class="typeOfBikeCard">deposit</div>
 			<div class="delimiterBikeCard" />
-			<div class="priceBikeCard">2000$</div>
+			<div class="priceBikeCard">{{ $props.motorcycle.deposit }}</div>
 		</div>
 		<div class="buttonContainerBikeCard">
 			<button class="addButtonBikeCard">add</button>
 		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+import type { MotorcyclesLanding } from '~/public/constants/constants';
+
+defineProps<{
+	motorcycle: MotorcyclesLanding
+}>()
+</script>
 
 <style>
 .bikeCard {
@@ -46,6 +54,7 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	position: relative;
+	width: 100%;
 }
 
 .typeOfBikeCard {
@@ -62,6 +71,7 @@
 .imageOfBikeCard {
 	width: 100%;
 	box-sizing: border-box;
+	object-fit: cover;
 }
 
 .imageOfBikeCardOverlay {
@@ -165,7 +175,7 @@
 
 @media (min-width: 768px) {
 	.bikeCard {
-		width: 28.49vw;
+		width: 28.47vw;
 	}
 
 	.imageOfBikeCard {

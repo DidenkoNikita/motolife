@@ -83,3 +83,35 @@ export const reviews = [
 			"The passion for motorcycles exuded by proficient people is unmistakable! I'm already making plans to return and explore more bike options.",
 	},
 ];
+
+export interface MotorcyclesLanding {
+	type: string;
+	name: string;
+	oneHourRental: string;
+	rentalDay: string;
+	deposit: string;
+	imageUrl: string;
+}
+
+export const motorcyclesLanding: MotorcyclesLanding[] = [{
+	type: 'road motorbikes',
+	name: 'Yamaha FZ6N',
+	oneHourRental: '100$',
+	rentalDay: '500$',
+	deposit: '2000$',
+	imageUrl: 'https://firebasestorage.googleapis.com/v0/b/motolife-bd353.appspot.com/o/motorcycles%2Fmoto1.jpeg?alt=media&token=9ce75ff6-2cbb-4912-90ff-b8b81d6aae43',
+}, {
+	type: 'sport motorbikes',
+	name: 'Honda CBR 600 F4I',
+	oneHourRental: '200$',
+	rentalDay: '700$',
+	deposit: '2000$',
+	imageUrl: 'https://firebasestorage.googleapis.com/v0/b/motolife-bd353.appspot.com/o/motorcycles%2Fmoto2.jpeg?alt=media&token=ed4d208e-1b08-4c94-b25f-e66222c5abdb'
+}, {
+	type: 'scooters',
+	name: 'Vespa LX50',
+	oneHourRental: '50$',
+	rentalDay: '400$',
+	deposit: '2000$',
+	imageUrl: 'https://firebasestorage.googleapis.com/v0/b/motolife-bd353.appspot.com/o/motorcycles%2Fmoto3.jpeg?alt=media&token=ecdb7040-9b13-483a-9db3-8971ae8d14f6'
+}];

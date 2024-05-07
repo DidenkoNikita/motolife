@@ -20,7 +20,8 @@
 		<div class="firstSectionDescriptionTitleWhite">reviews</div>
 		<div class="reviewsWrapper">
 			<div class="slider">
-				<button class="slider-controls" @mouseleave="showEllipsesLeft = false" @mouseenter="showEllipsesLeft = true" @click="moveLeft">
+				<button class="slider-controls" @mouseleave="showEllipsesLeft = false" @mouseenter="showEllipsesLeft = true"
+					@click="moveLeft">
 					<IconEllipseLeft />
 					<IconEllipseLeft v-if="showEllipsesLeft" />
 					<IconArrowLeft />
@@ -39,7 +40,8 @@
 						<div class="sliderElementReview">{{ review.review }}</div>
 					</div>
 				</div>
-				<button class="slider-controls" @mouseleave="showEllipsesRight = false" @mouseenter="showEllipsesRight = true" @click="moveRight">
+				<button class="slider-controls" @mouseleave="showEllipsesRight = false" @mouseenter="showEllipsesRight = true"
+					@click="moveRight">
 					<IconArrowRight />
 					<IconEllipseRight v-if="showEllipsesRight" />
 					<IconEllipseRight />
@@ -47,12 +49,39 @@
 			</div>
 			<div class="animateOrangeLogo"></div>
 		</div>
+		<div class="rentalServiceWrapper">
+			<div class="rentalServiceWhiteTitle">Rental Service</div>
+			<div class="registrationWrapper">
+				<div class="firstSectionDescriptionTitleWhite noMobileRegistrationSection">
+					<div style="display: flex; justify-content: center;">
+						<span class="firstSectionDescriptionTitleOrange">welcome</span>
+						to our platform <br />
+					</div>
+					<span class="firstSectionDescriptionTitleOrange">please</span>
+					, complete your
+					<span class="firstSectionDescriptionTitleOrange">registration</span>
+				</div>
+				<div class="firstSectionDescriptionTitleWhite mobileRegistrationSection">
+					<span class="firstSectionDescriptionTitleOrange">welcome</span>
+					to our <br /> platform <br />
+					<span class="firstSectionDescriptionTitleOrange">please</span>
+					, complete <br /> your
+					<span class="firstSectionDescriptionTitleOrange">registration</span>
+				</div>
+				<button class="signUpButton" @click="router.push('/signup')">sign up</button>
+			</div>
+			<div class="rentalServiceOrangeTitle">motor life</div>
+		</div>
 	</div>
 </template>
 
+<script setup lang="ts">
+const router = useRouter();
+</script>
+
 <script lang="ts">
 import { defineComponent } from "vue";
-import {faq, reviews} from 'public/constants/constants'
+import { faq, reviews } from 'public/constants/constants'
 
 export default defineComponent({
 	data() {
@@ -61,39 +90,39 @@ export default defineComponent({
 			reviews: reviews,
 			activeButtonIndex: null as number | null,
 			currentIndex: 0,
-      itemsPerPage: 3,
+			itemsPerPage: 3,
 			showEllipsesLeft: false,
 			showEllipsesRight: false
 		};
 	},
 	computed: {
-    visibleReviews() {
-      return this.reviews.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
-    }
-  },
+		visibleReviews() {
+			return this.reviews.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
+		}
+	},
 	methods: {
-    toggleRedElement(index: number) {
-      if (this.activeButtonIndex === index) {
-        this.activeButtonIndex = null;
-      } else {
-        this.activeButtonIndex = index;
-      }
-    },
-    moveLeft() {
-      if (this.currentIndex > 0) {
-        this.currentIndex--;
-      }
+		toggleRedElement(index: number) {
+			if (this.activeButtonIndex === index) {
+				this.activeButtonIndex = null;
+			} else {
+				this.activeButtonIndex = index;
+			}
+		},
+		moveLeft() {
+			if (this.currentIndex > 0) {
+				this.currentIndex--;
+			}
 			this.showEllipsesLeft = false;
 			setTimeout(() => this.showEllipsesLeft = true, 200)
-    },
-    moveRight() {
-      if (this.currentIndex < this.reviews.length - this.itemsPerPage) {
-        this.currentIndex++;
-      }
+		},
+		moveRight() {
+			if (this.currentIndex < this.reviews.length - this.itemsPerPage) {
+				this.currentIndex++;
+			}
 			this.showEllipsesRight = false;
 			setTimeout(() => this.showEllipsesRight = true, 200)
-    }
-  },
+		}
+	},
 });
 </script>
 
@@ -176,9 +205,9 @@ export default defineComponent({
 }
 
 .slider {
-  display: flex;
+	display: flex;
 	justify-content: center;
-  align-items: center;
+	align-items: center;
 	width: 95%;
 	position: absolute;
 	gap: 74px;
@@ -190,7 +219,7 @@ export default defineComponent({
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-  margin: 0 10px;
+	margin: 0 10px;
 	width: 73px;
 	background: transparent;
 	border: none;
@@ -198,7 +227,7 @@ export default defineComponent({
 }
 
 .slider-container {
-  display: flex;
+	display: flex;
 	width: 80%;
 	justify-content: space-between;
 }
@@ -208,7 +237,7 @@ export default defineComponent({
 	padding: 30px;
 	border-top: 1px solid #F4931C;
 	border-left: 1px solid #F4931C;
-	background: #000101; 
+	background: #000101;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -235,7 +264,7 @@ export default defineComponent({
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 	position: relative;
 }
 
@@ -270,26 +299,71 @@ export default defineComponent({
 	font-weight: 700;
 	line-height: 25px;
 	letter-spacing: 0.8px;
-	text-transform: uppercase; 
+	text-transform: uppercase;
 }
 
 .sliderElementReview {
 	color: #FBFCFC;
 	text-overflow: ellipsis;
-	/* white-space: wrap; */
 	text-wrap: wrap;
 	font-family: "Altone Trial";
 	font-size: 18px;
 	font-weight: 400;
-	line-height: 30px; 
+	line-height: 30px;
 	letter-spacing: 0.36px;
-	text-transform: uppercase; 
+	text-transform: uppercase;
+}
+
+.rentalServiceWrapper {
+	width: 50vw;
+	height: 39.35vh;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+.rentalServiceWhiteTitle {
+	color: #FBFCFC;
+	font-family: "Altone Trial";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0.36px;
+	text-transform: uppercase;
+}
+
+.rentalServiceOrangeTitle {
+	color: #F4931C;
+	font-family: "GetVoIP Grotesque";
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 30px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-top: 20px;
+}
+
+.registrationWrapper {
+	width: 100%;
+	height: 100%;
+	border-left: 3px solid #F4931C;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
 }
 
 @keyframes spinOrange {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}
@@ -320,14 +394,18 @@ export default defineComponent({
 
 	.slider-item {
 		width: 340px;
-  	height: 340px;
+		height: 340px;
+	}
+
+	.mobileRegistrationSection {
+		display: none;
 	}
 }
 
 @media (max-width: 767px) {
-	html, body {
-		/* overflow-x: hidden; */
-		/* scroll-snap-stop: ; */
+
+	html,
+	body {
 		max-height: 1000vh;
 	}
 
@@ -343,7 +421,6 @@ export default defineComponent({
 
 	.reviewsWrapper {
 		width: calc(100vw - 24px);
-		/* overflow-x: hidden; */
 	}
 
 	.faqChildWrapper {
@@ -357,8 +434,6 @@ export default defineComponent({
 
 	.slider {
 		width: 100%;
-		/* overflow-y: hidden;
-		overflow-x: auto; */
 		top: 0;
 	}
 
@@ -384,7 +459,26 @@ export default defineComponent({
 		height: 110%;
 		margin-right: 0px;
 		top: -150px;
-		right: -350px;		
+		right: -350px;
+	}
+
+	.rentalServiceWrapper {
+		width: 100%;
+		margin-top: -100px;
+	}
+
+	.noMobileRegistrationSection {
+		display: none;
+	}
+
+	.mobileRegistrationSection {
+		display: initial;
+		gap: 0;
+		text-align: center;
+	}
+
+	.rentalServiceWrapper {
+		height: 46.36vh;
 	}
 }
 </style>
